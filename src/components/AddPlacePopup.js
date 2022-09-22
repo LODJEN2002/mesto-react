@@ -3,17 +3,15 @@ import React from 'react'
 
 function AddPlacePopup(props) {
     const { isOpen, onClose, onUpdateCards } = props
-
     const refTitle = React.useRef()
     const refSubtitle = React.useRef()
-
 
     function handleSubmit(e) {
         e.preventDefault();
 
         onUpdateCards({
-            place:refTitle.current.value,
-            link:refSubtitle.current.value
+            place: refTitle.current.value,
+            link: refSubtitle.current.value
         })
     }
 
@@ -32,7 +30,6 @@ function AddPlacePopup(props) {
             <span className="link-input-error popup__error-hidden popup__error-subtitle"></span>
         </PopupWithForm>
     )
-
 }
 
 export default AddPlacePopup

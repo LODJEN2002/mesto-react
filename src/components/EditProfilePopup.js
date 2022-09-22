@@ -6,7 +6,6 @@ function EditProfilePopup(props) {
     const { isOpen, onClose, onUpdateUser } = props
     const [name, setName] = React.useState('')
     const [description, setDescription] = React.useState('')
-
     const currentUser = React.useContext(CurrentUserContext)
 
     useEffect(() => {
@@ -23,9 +22,8 @@ function EditProfilePopup(props) {
     }
 
     function handleSubmit(e) {
-        // Запрещаем браузеру переходить по адресу формы
         e.preventDefault();
-        // Передаём значения управляемых компонентов во внешний обработчик
+
         onUpdateUser({
             name,
             about: description,

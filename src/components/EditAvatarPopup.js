@@ -1,19 +1,17 @@
 import PopupWithForm from './PopupWithForm'
 import React from 'react'
 
-
 function EditAvatarPopup(props) {
     const { isOpen, onClose, onUpdateAvatar } = props
-
     const refAvatar = React.useRef()
 
     function handleSubmit(e) {
         e.preventDefault();
-      
+
         onUpdateAvatar({
-          avatar: refAvatar.current.value,
+            avatar: refAvatar.current.value,
         });
-      }
+    }
 
     return (
         <PopupWithForm

@@ -1,14 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import editButton from '../images/Edit-Button.svg'
-import api from '../utils/Api'
 import Card from './Card';
 import { CurrentUserContext } from './contexts/CurrentUserContext'
 
 function Main(props) {
-    // const [cards, setCards] = React.useState([])
-
     const { onEditAvatar, onEditProfile, onAddPlace, onCardClick, cards, onCardLike, onCardDelete } = props
-
     const currentUser = React.useContext(CurrentUserContext);
     const { name, about, avatar } = currentUser
 
@@ -42,7 +38,6 @@ function Main(props) {
                     />
                 ))}
             </section>
-
         </main>
     );
 }

@@ -2,14 +2,12 @@ import React, { useEffect } from 'react';
 import Header from './Header'
 import Main from './Main'
 import Footer from './Footer'
-// import PopupWithForm from './PopupWithForm'
 import EditProfilePopup from './EditProfilePopup'
 import AddPlacePopup from './AddPlacePopup'
 import EditAvatarPopup from './EditAvatarPopup'
 import ImagePopup from './ImagePopup'
 import api from '../utils/Api'
 import { CurrentUserContext } from './contexts/CurrentUserContext'
-
 
 function App() {
     const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
@@ -122,14 +120,12 @@ function App() {
                     isOpen={isEditProfilePopupOpen}
                     onClose={closeAllPopups}
                     onUpdateUser={handleUpdateUser}
-                >
-                </EditProfilePopup>
+                />
                 <AddPlacePopup
                     isOpen={isAddPlacePopupOpen}
                     onClose={closeAllPopups}
                     onUpdateCards={handleAddPlaceSubmit}
-                >
-                </AddPlacePopup>
+                />
                 <EditAvatarPopup
                     isOpen={isEditAvatarPopupOpen}
                     onClose={closeAllPopups}
