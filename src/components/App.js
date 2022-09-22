@@ -41,18 +41,21 @@ function App() {
             api.likeCard(card._id)
                 .then((newCard) => {
                     setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
-                });
+                })
+                .catch(error => console.error(error))
         } else {
             api.likeOffCard(card._id)
                 .then((newCard) => {
                     setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
-                });
+                })
+                .catch(error => console.error(error))
         }
     }
 
     function handleCardDelete(card) {
         api.deliteCard(card._id)
-            .then(setCards(cards.filter(element => element._id !== card._id)))
+            .then(setCards((cards) => cards.filter(element => element._id !== card._id)))
+            .catch(error => console.error(error))
     }
 
     const handleEditProfileClick = () => {
@@ -81,17 +84,23 @@ function App() {
 
     function handleUpdateUser(obj) {
         api.patchProfileInfo(obj.name, obj.about)
-        obj.avatar = currentUser.avatar
-        setCurrentUser(obj)
+            .then(() => {
+                obj.avatar = currentUser.avatar
+                setCurrentUser(obj)
+            })
+            .catch(error => console.error(error))
         closeAllPopups()
     }
 
     function handleUpdateAvatar(link) {
         api.newAvatar(link.avatar)
-        link.name = currentUser.name
-        link.about = currentUser.about
+            .then(() => {
+                link.name = currentUser.name
+                link.about = currentUser.about
+                setCurrentUser(link)
+            })
+            .catch(error => console.error(error))
         closeAllPopups()
-        setCurrentUser(link)
     }
 
     function handleAddPlaceSubmit(input) {
@@ -99,6 +108,7 @@ function App() {
             .then((newCard) => {
                 setCards([newCard, ...cards]);
             })
+            .catch(error => console.error(error))
         closeAllPopups()
     }
 

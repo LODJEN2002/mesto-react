@@ -15,6 +15,11 @@ function AddPlacePopup(props) {
         })
     }
 
+    React.useEffect(() => {
+        refTitle.current.value = ''
+        refSubtitle.current.value = ''
+    }, [isOpen])
+
     return (
         <PopupWithForm
             name='popup-cards'
