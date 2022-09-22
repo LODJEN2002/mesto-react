@@ -1,6 +1,6 @@
 import React from 'react';
 import trash from '../images/Trash.svg'
-import { CurrentUserContext } from './contexts/CurrentUserContext'
+import { CurrentUserContext } from '../contexts/CurrentUserContext'
 
 function Card(props) {
     const { card, onCardClick, onCardLike, onCardDelete } = props
