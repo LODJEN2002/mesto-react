@@ -17,15 +17,8 @@ function App() {
     const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
     const [isPopupOpenImage, setIsPopupOpenImage] = React.useState(false);
     const [selectedCard, setSelectedCard] = React.useState(null)
-
-    //Новый код 
-    //В компоненте App создайте переменную состояния currentUser и эффект 
-    //при монтировании, который будет вызывать api.getUserInfo и обновлять 
-    //стейт-переменную из полученного значения.
-
     const [currentUser, setCurrentUser] = React.useState('')
     const [cards, setCards] = React.useState([])
-    // const { name, job, avatar } = currentUser
 
     useEffect(() => {
         api.getProfileInfo()
@@ -88,21 +81,19 @@ function App() {
         setIsPopupOpenImage(false)
     }
 
-    function handleUpdateUser(currentUser) {
-        api.patchProfileInfo(currentUser.name, currentUser.about)
-        setCurrentUser(currentUser)
+    function handleUpdateUser(obj) {
+        api.patchProfileInfo(obj.name, obj.about)
+        obj.avatar = currentUser.avatar
+        setCurrentUser(obj)
         closeAllPopups()
-        // console.log(currentUser)
-        // Тут выподает name и job, т.к. Обновляется весь куррентюзер
     }
 
     function handleUpdateAvatar(link) {
-        console.log(link)
         api.newAvatar(link.avatar)
+        link.name = currentUser.name
+        link.about = currentUser.about
         closeAllPopups()
         setCurrentUser(link)
-        console.log(currentUser)
-        // Тут выподает name и job, т.к. Обновляется весь куррентюзер
     }
 
     function handleAddPlaceSubmit(input) {
